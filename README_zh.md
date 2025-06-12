@@ -15,18 +15,21 @@
 
 1.  克隆仓库:
     ```bash
-    git clone https://github.com/defi-maker/backpack_liquidation_limit
-    cd backpack_liquidation_limit
+    git clone https://github.com/defi-maker/backpack-arbitrage-bot
+    cd backpack-arbitrage-bot
     ```
-2.  创建虚拟环境并安装依赖:
+2.  使用 uv 安装依赖:
     ```bash
-    python -m venv venv
-    source venv/bin/activate   # Linux/MacOS
-    venv\Scripts\activate      # Windows
-    pip install -r requirements.txt
+    uv sync
     ```
 
 ## 配置
 
 将 `config.yaml.example` 复制为 `config.yaml` 并填写您的 API 密钥、密匙和所需参数。
 
+## 运行
+
+运行机器人:
+    ```bash
+    uv run main.py
+    ```

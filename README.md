@@ -15,18 +15,21 @@ This Python bot is designed for automated liquidation arbitrage on the Backpack 
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/defi-maker/backpack_liquidation_limit
-    cd backpack_liquidation_limit
+    git clone https://github.com/defi-maker/backpack-arbitrage-bot
+    cd backpack-arbitrage-bot
     ```
-2.  Create a virtual environment and install dependencies:
+2.  Install dependencies using uv:
     ```bash
-    python -m venv venv
-    source venv/bin/activate   # Linux/MacOS
-    venv\Scripts\activate      # Windows
-    pip install -r requirements.txt
+    uv sync
     ```
 
 ## Configuration
 
 Copy `config.yaml.example` to `config.yaml` and fill in your API keys, secrets, and desired parameters.
 
+## Usage
+
+Run the bot:
+    ```bash
+    uv run main.py
+    ```
