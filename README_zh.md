@@ -1,0 +1,32 @@
+# Backpack 清算套利机器人
+
+这个 Python 机器人专为 Backpack 交易所的永续合约市场（例如 SOL_USDC_PERP）上的自动化清算套利而设计。它通过在一个子账户上同时开立空头头寸，并在另一个子账户上开立多头头寸来实现中性策略。其核心创新在于根据**对手方头寸的预估清算价格**设置每个头寸的止盈订单，旨在市场波动和清算瀑布期间高效地捕获利润。该机器人还自动化了初始资金存入和交易后的资金归集，以优化资金管理并最大程度地降低交易成本。
+
+## 功能特性
+
+*   **Delta 中性策略**: 同时开立多头和空头头寸以对冲市场风险。
+*   **策略性订单放置**: 空头头寸使用挂单限价订单（可能赚取挂单返佣），多头头寸使用市价订单（立即执行）。
+*   **动态止盈**: 根据**对手方头寸的预估清算价格**设置每个头寸的止盈限价订单，并可配置偏移量。
+*   **自动化资金管理**: 处理从主账户到子账户的初始 USDC 存款，并在头寸平仓后将所有剩余资金归集回主账户。
+*   **鲁棒性**: 包含订单放置、头寸验证和 API 调用的重试机制，以及用于监控的全面日志记录。
+*   **可配置**: 杠杆、挂单/止盈偏移、订单超时和操作延迟等参数均可通过 `config.yaml` 完全自定义。
+
+## 安装
+
+1.  克隆仓库:
+    ```bash
+    git clone https://github.com/defi-maker/backpack_liquidation_limit
+    cd backpack_liquidation_limit
+    ```
+2.  创建虚拟环境并安装依赖:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate   # Linux/MacOS
+    venv\Scripts\activate      # Windows
+    pip install -r requirements.txt
+    ```
+
+## 配置
+
+将 `config.yaml.example` 复制为 `config.yaml` 并填写您的 API 密钥、密匙和所需参数。
+

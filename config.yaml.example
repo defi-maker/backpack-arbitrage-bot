@@ -1,0 +1,58 @@
+# 主账户配置 - 清算后资金将回到此处
+main_account:
+  address: ""
+
+# 主账户API凭证
+api:
+  key: ""
+  secret: ""
+
+symbol: "SOL_USDC_PERP"        # 市场的准确名称
+initial_deposit: "1"           # 每轮USDC数量
+check_interval: 10             # 秒
+
+# 只保留一组多空账户
+pairs:
+  - short_account:
+      name: "ShortSub"
+      address: ""
+      api_key: ""
+      api_secret: ""
+    long_account:
+      name: "LongSub"
+      address: ""
+      api_key: ""
+      api_secret: ""
+
+# maker单最多尝试次数，超过则放弃
+limit_order_retries: 60
+
+# maker单相对最优bid/ask的偏移（%）
+maker_offset:
+  long: 0.000125    # 第一个（空头）订单：在bid上方偏移___%
+  short: 0.000125   # 第一个（多头）订单：在ask下方偏移___%
+
+# LIMIT单等待成交的超时时间（秒）
+limit_order_timeout: 30
+
+# 止盈的价格偏移（与价格单位一致）
+take_profit_offset:
+  long: 0.05      # 多头止盈 = （对手方强平价 + __ USDC）
+  short: -0.05    # 空头止盈 = （对手方强平价 - __ USDC）
+
+# 归集资金时的最大尝试次数
+sweep_attempts: 10
+
+# 各类操作的通用延迟
+general_delay:
+  min: 5
+  max: 15
+
+# 杠杆倍数
+leverage: 50
+
+# 每轮循环之间的等待时间（秒）
+cycle_wait_time: 10
+
+# 各交易对启动的最大延迟（秒）
+pair_start_delay_max: 120  
